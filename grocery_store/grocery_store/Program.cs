@@ -35,13 +35,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
     ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
+
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 
 // Cấu hình middlewares và routes
 //test
 app.MapGet("/", () => "Hello World!");
 //test
-app.MapGet("/cart", async (AppDbContext dbContext) =>
+app.MapGet("/testcart", async (AppDbContext dbContext) =>
 {
     // Lấy tất cả các CartItems từ cơ sở dữ liệu
     var cartItems = await dbContext.cart.ToListAsync();
@@ -50,7 +53,7 @@ app.MapGet("/cart", async (AppDbContext dbContext) =>
     return Results.Ok(cartItems);
 });
 //test
-app.MapGet("/product", async (AppDbContext dbContext) =>
+app.MapGet("/testproduct", async (AppDbContext dbContext) =>
 {
     // Lấy tất cả các CartItems từ cơ sở dữ liệu
     var productItem = await dbContext.products.ToListAsync();
@@ -58,5 +61,11 @@ app.MapGet("/product", async (AppDbContext dbContext) =>
     // Trả về danh sách CartItems dưới dạng JSON
     return Results.Ok(productItem);
 });
+
+app.MapControllerRoute(
+    name: "productView",
+    pattern: "products/view/{page}",
+    defaults: new { controller = "Product", action = "ProductView", page = 1 });
+
 
 app.Run();

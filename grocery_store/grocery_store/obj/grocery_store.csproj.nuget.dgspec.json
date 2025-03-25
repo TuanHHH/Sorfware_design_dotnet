@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tuan\\source\\repos\\grocery_store\\grocery_store\\grocery_store.csproj": {}
+    "C:\\Users\\Tuan\\source\\repos\\New folder\\grocery_store\\grocery_store\\grocery_store.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tuan\\source\\repos\\grocery_store\\grocery_store\\grocery_store.csproj": {
+    "C:\\Users\\Tuan\\source\\repos\\New folder\\grocery_store\\grocery_store\\grocery_store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tuan\\source\\repos\\grocery_store\\grocery_store\\grocery_store.csproj",
+        "projectUniqueName": "C:\\Users\\Tuan\\source\\repos\\New folder\\grocery_store\\grocery_store\\grocery_store.csproj",
         "projectName": "grocery_store",
-        "projectPath": "C:\\Users\\Tuan\\source\\repos\\grocery_store\\grocery_store\\grocery_store.csproj",
+        "projectPath": "C:\\Users\\Tuan\\source\\repos\\New folder\\grocery_store\\grocery_store\\grocery_store.csproj",
         "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tuan\\source\\repos\\grocery_store\\grocery_store\\obj\\",
+        "outputPath": "C:\\Users\\Tuan\\source\\repos\\New folder\\grocery_store\\grocery_store\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

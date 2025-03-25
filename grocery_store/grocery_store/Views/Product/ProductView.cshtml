@@ -1,0 +1,107 @@
+﻿@using grocery_store.ViewModels
+@model ProductViewModel
+
+<head>
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 10px 15px;
+            margin: 0 5px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px; /* Khoảng cách giữa các sản phẩm */
+        }
+
+        .col-md-2 {
+            /* Chúng ta có thể bỏ đi lớp .col-md-2 trong HTML vì đang sử dụng CSS Grid */
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .btn-primary {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+
+<h1>Danh sách Sản phẩm</h1>
+
+<div class="row">
+    @foreach (var product in Model.Products)
+    {
+        <div class="col-md-2">
+            <div class="card">
+                <img class="card-img-top" src="@product.ImageUrl" alt="@product.ProductName" />
+                <div class="card-body">
+                    <h5 class="card-title">@product.ProductName</h5>
+                    <p class="card-text">@product.Price.ToString("C")</p>
+                    <a href="@Url.Action("Details", "Product", new { id = product.Id })" class="btn btn-primary">Chi tiết</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+    @if (Model.CurrentPage > 1)
+    {
+        <a href="@Url.Action("ProductView", "Product", new { page = Model.CurrentPage - 1 })">&laquo; Trang trước</a>
+    }
+
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        <a href="@Url.Action("ProductView", "Product", new { page = i })" class="@(i == Model.CurrentPage ? "active" : "")">@i</a>
+    }
+
+    @if (Model.CurrentPage < Model.TotalPages)
+    {
+        <a href="@Url.Action("ProductView", "Product", new { page = Model.CurrentPage + 1 })">Trang sau &raquo;</a>
+    }
+</div>
